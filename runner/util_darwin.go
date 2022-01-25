@@ -6,6 +6,8 @@ import (
 	"os/exec"
 	"syscall"
 	"time"
+
+	"github.com/pkg/errors"
 )
 
 func (e *Engine) killCmd(cmd *exec.Cmd) (pid int, err error) {
@@ -21,11 +23,11 @@ func (e *Engine) killCmd(cmd *exec.Cmd) (pid int, err error) {
 	}
 	pgid, err := syscall.Getpgid(cmd.Process.Pid)
 	if err != nil {
-		return pgid, err
+		return pgid, errors.Wrapf(err, "failed to get pgid,pid %v", pid)
 	}
 	err = syscall.Kill(-pgid, syscall.SIGKILL)
 	if err != nil {
-		return pid, err
+		return pid, errors.Wrapf(err, "failed to kill process by pgid %v", pgid)
 	}
 	// Wait releases any resources associated with the Process.
 	_, err = cmd.Process.Wait()
