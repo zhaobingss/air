@@ -114,6 +114,32 @@ func (e *Engine) checkRunEnv() error {
 
 func (e *Engine) watching(root string) error {
 	return filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+
+		// 修复符号连接无法监控问题
+		// Follow symbolic link
+		if e.config.Build.FollowSymlink && (info.Mode()&os.ModeSymlink) > 0 {
+			link, err := filepath.EvalSymlinks(path)
+			if err != nil {
+				return err
+			}
+			linkInfo, err := os.Stat(link)
+			if err != nil {
+				return err
+			}
+			if linkInfo.IsDir() {
+				err = e.watching(link)
+				if err != nil {
+					return err
+				}
+			} else {
+				err = e.watchPath(link)
+				if err != nil {
+					return err
+				}
+			}
+			return nil
+		}
+
 		// NOTE: path is absolute
 		if info != nil && !info.IsDir() {
 			if e.checkIncludeFile(path) {
@@ -148,6 +174,7 @@ func (e *Engine) watching(root string) error {
 		if isIn {
 			return e.watchPath(path)
 		}
+
 		return nil
 	})
 }
@@ -169,25 +196,6 @@ func (e *Engine) cacheFileChecksums(root string) error {
 			if e.isTmpDir(path) || e.isTestDataDir(path) || isHiddenDirectory(path) || e.isExcludeDir(path) {
 				e.watcherDebug("!exclude checksum %s", e.config.rel(path))
 				return filepath.SkipDir
-			}
-
-			// Follow symbolic link
-			if e.config.Build.FollowSymlink && (info.Mode()&os.ModeSymlink) > 0 {
-				link, err := filepath.EvalSymlinks(path)
-				if err != nil {
-					return err
-				}
-				linkInfo, err := os.Stat(link)
-				if err != nil {
-					return err
-				}
-				if linkInfo.IsDir() {
-					err = e.watchPath(link)
-					if err != nil {
-						return err
-					}
-				}
-				return nil
 			}
 		}
 
