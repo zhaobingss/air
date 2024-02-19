@@ -1,6 +1,6 @@
 # :cloud: Air - Live reload for Go apps
 
-[![Go](https://github.com/cosmtrek/air/actions/workflows/release.yml/badge.svg)](https://github.com/cosmtrek/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/cosmtrek/air/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cosmtrek/air&amp;utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/cosmtrek/air)](https://goreportcard.com/report/github.com/cosmtrek/air) [![codecov](https://codecov.io/gh/cosmtrek/air/branch/master/graph/badge.svg)](https://codecov.io/gh/cosmtrek/air)
+[![Go](https://github.com/zhaobingss/air/actions/workflows/release.yml/badge.svg)](https://github.com/zhaobingss/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/cosmtrek/air/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cosmtrek/air&amp;utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/zhaobingss/air)](https://goreportcard.com/report/github.com/zhaobingss/air) [![codecov](https://codecov.io/gh/cosmtrek/air/branch/master/graph/badge.svg)](https://codecov.io/gh/cosmtrek/air)
 
 ![air](docs/air.png)
 
@@ -41,7 +41,7 @@ Air 是一個另類的自動重新編譯執行命令列工具，用於開發 Go 
 需要使用 go 1.18 或更高版本：
 
 ```bash
-go install github.com/cosmtrek/air@latest
+go install github.com/zhaobingss/air@latest
 ```
 
 ### 透過 install.sh
@@ -60,10 +60,10 @@ air -v
 
 ```sh
 # binary will be /usr/local/bin/air
-curl -sSfL https://goblin.run/github.com/cosmtrek/air | sh
+curl -sSfL https://goblin.run/github.com/zhaobingss/air | sh
 
 # to put to a custom path
-curl -sSfL https://goblin.run/github.com/cosmtrek/air | PREFIX=/tmp sh
+curl -sSfL https://goblin.run/github.com/zhaobingss/air | PREFIX=/tmp sh
 ```
 
 ### 透過 `go install`
@@ -71,7 +71,7 @@ curl -sSfL https://goblin.run/github.com/cosmtrek/air | PREFIX=/tmp sh
 使用 go 1.18 或更高版本:
 
 ```bash
-go install github.com/cosmtrek/air@latest
+go install github.com/zhaobingss/air@latest
 ```
 
 ### Docker/Podman
@@ -212,7 +212,7 @@ FROM golang:1.21-alpine
 
 WORKDIR /app
 
-RUN go install github.com/cosmtrek/air@latest
+RUN go install github.com/zhaobingss/air@latest
 
 COPY go.mod go.sum ./
 RUN go mod download
@@ -249,7 +249,7 @@ export PATH=$PATH:$(go env GOPATH)/bin <---- Confirm this line in you profile!!!
 
 ### 當 bin 中包含 ' 時，在 wsl 下的錯誤
 
-應該使用 `\` 來轉義 bin 中的 `'。相關議題：[#305](https://github.com/cosmtrek/air/issues/305)
+應該使用 `\` 來轉義 bin 中的 `'。相關議題：[#305](https://github.com/zhaobingss/air/issues/305)
 
 ## 開發
 

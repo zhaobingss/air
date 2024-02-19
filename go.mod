@@ -1,4 +1,4 @@
-module github.com/cosmtrek/air
+module github.com/zhaobingss/air
 
 go 1.20
 

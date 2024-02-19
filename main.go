@@ -10,7 +10,7 @@ import (
 	"runtime/debug"
 	"syscall"
 
-	"github.com/cosmtrek/air/runner"
+	"github.com/zhaobingss/air/runner"
 )
 
 var (

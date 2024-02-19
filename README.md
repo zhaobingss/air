@@ -1,6 +1,6 @@
 # :cloud: Air - Live reload for Go apps
 
-[![Go](https://github.com/cosmtrek/air/actions/workflows/release.yml/badge.svg)](https://github.com/cosmtrek/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/cosmtrek/air/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cosmtrek/air&amp;utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/cosmtrek/air)](https://goreportcard.com/report/github.com/cosmtrek/air) [![codecov](https://codecov.io/gh/cosmtrek/air/branch/master/graph/badge.svg)](https://codecov.io/gh/cosmtrek/air)
+[![Go](https://github.com/zhaobingss/air/actions/workflows/release.yml/badge.svg)](https://github.com/zhaobingss/air/actions?query=workflow%3AGo+branch%3Amaster) [![Codacy Badge](https://app.codacy.com/project/badge/Grade/dcb95264cc504cad9c2a3d8b0795a7f8)](https://www.codacy.com/gh/cosmtrek/air/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=cosmtrek/air&amp;utm_campaign=Badge_Grade) [![Go Report Card](https://goreportcard.com/badge/github.com/zhaobingss/air)](https://goreportcard.com/report/github.com/zhaobingss/air) [![codecov](https://codecov.io/gh/cosmtrek/air/branch/master/graph/badge.svg)](https://codecov.io/gh/cosmtrek/air)
 
 ![air](docs/air.png)
 
@@ -45,7 +45,7 @@ Use a comma to separate items for arguments that take a list as input:
 With go 1.18 or higher:
 
 ```bash
-go install github.com/cosmtrek/air@latest
+go install github.com/zhaobingss/air@latest
 ```
 
 ### Via install.sh
@@ -64,10 +64,10 @@ air -v
 
 ```sh
 # binary will be /usr/local/bin/air
-curl -sSfL https://goblin.run/github.com/cosmtrek/air | sh
+curl -sSfL https://goblin.run/github.com/zhaobingss/air | sh
 
 # to put to a custom path
-curl -sSfL https://goblin.run/github.com/cosmtrek/air | PREFIX=/tmp sh
+curl -sSfL https://goblin.run/github.com/zhaobingss/air | PREFIX=/tmp sh
 ```
 
 ### Docker/Podman
@@ -209,7 +209,7 @@ FROM golang:1.21-alpine
 
 WORKDIR /app
 
-RUN go install github.com/cosmtrek/air@latest
+RUN go install github.com/zhaobingss/air@latest
 
 COPY go.mod go.sum ./
 RUN go mod download
@@ -246,11 +246,11 @@ export PATH=$PATH:$(go env GOPATH)/bin <---- Confirm this line in you profile!!!
 
 ### Error under wsl when ' is included in the bin
 
-Should use `\` to escape the `' in the bin. related issue: [#305](https://github.com/cosmtrek/air/issues/305)
+Should use `\` to escape the `' in the bin. related issue: [#305](https://github.com/zhaobingss/air/issues/305)
 
 ### Question: how to do hot compile only and do not run anything? 
 
-[#365](https://github.com/cosmtrek/air/issues/365)
+[#365](https://github.com/zhaobingss/air/issues/365)
 
 ```toml
 [build]
